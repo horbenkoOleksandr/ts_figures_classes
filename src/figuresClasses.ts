@@ -17,14 +17,17 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('your error message');
+      throw new Error('All side lengths must be positive numbers');
     }
 
     const maxSide = Math.max(a, b, c);
     const sumOthers = a + b + c - maxSide;
 
     if (maxSide >= sumOthers) {
-      throw new Error('your error message');
+      throw new Error(
+        `The longest side of a triangle must be 
+        shorter than the sum of the other two sides`,
+      );
     }
   }
 
@@ -37,7 +40,7 @@ export class Triangle implements Figure {
         (semiPerimetr - this.c),
     );
 
-    return Number(area.toFixed(2));
+    return Math.floor(area * 100) / 100;
   }
 }
 
@@ -49,7 +52,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('The radius must be a positive number');
     }
   }
 
@@ -69,14 +72,14 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('your error message');
+      throw new Error('Rectangle width and height must be positive numbers');
     }
   }
 
   getArea(): number {
     const area = this.width * this.height;
 
-    return Number(area.toFixed(2));
+    return Math.floor(area * 100) / 100;
   }
 }
 
